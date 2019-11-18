@@ -1,6 +1,7 @@
 package com.example.selfhelpcity.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -18,6 +19,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.adapter.ConstellationAdapter;
@@ -179,6 +183,44 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+//    private void showPickerView() {// 弹出选择器
+//
+//        OptionsPickerView pvOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
+//            @Override
+//            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+//                //返回的分别是三个级别的选中位置
+//                String opt1tx = options1Items.size() > 0 ?
+//                        options1Items.get(options1).getPickerViewText() : "";
+//
+//                String opt2tx = options2Items.size() > 0
+//                        && options2Items.get(options1).size() > 0 ?
+//                        options2Items.get(options1).get(options2) : "";
+//
+//                String opt3tx = options2Items.size() > 0
+//                        && options3Items.get(options1).size() > 0
+//                        && options3Items.get(options1).get(options2).size() > 0 ?
+//                        options3Items.get(options1).get(options2).get(options3) : "";
+//
+//                String tx = opt1tx + opt2tx + opt3tx;
+//                provinec = opt1tx;
+//                city = opt2tx;
+//                area = opt3tx;
+//                tvUserAddressDQ.setText(tx);
+//            }
+//        })
+//
+//                .setTitleText("城市选择")
+//                .setDividerColor(Color.BLACK)
+//                .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
+//                .setContentTextSize(20)
+//                .build();
+//
+//    /*pvOptions.setPicker(options1Items);//一级选择器
+//    pvOptions.setPicker(options1Items, options2Items);//二级选择器*/
+//        pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
+//        pvOptions.show();
+//    }
 
     private boolean onNavigationItemSelected(MenuItem menuItem) {
         Intent intent = new Intent();
