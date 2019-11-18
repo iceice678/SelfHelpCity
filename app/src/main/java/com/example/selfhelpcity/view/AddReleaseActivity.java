@@ -38,6 +38,7 @@ public class AddReleaseActivity extends BaseActivity {
     @Override
     protected int getContentView() {
         return R.layout.activity_add_release;
+//        return R.layout.activity_add_release;
     }
 
     @Override
