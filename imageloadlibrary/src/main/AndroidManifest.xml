@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="comenjoy.com.imageloadlibrary">
+
+    <application>
+        <meta-data
+            android:name="comenjoy.com.imageloadlibrary.ImageGlideModule"
+            android:value="AppGlideModule" />
+    </application>
+</manifest>

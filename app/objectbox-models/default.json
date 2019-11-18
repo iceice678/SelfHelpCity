@@ -1,0 +1,86 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6163401970239180480",
+      "lastPropertyId": "8:143887678491252219",
+      "name": "HotBean",
+      "properties": [
+        {
+          "id": "1:8542179517666502107",
+          "name": "id"
+        },
+        {
+          "id": "2:3164397389592951106",
+          "name": "wallet"
+        },
+        {
+          "id": "3:875376855257726591",
+          "name": "hash"
+        },
+        {
+          "id": "4:6959414976787187113",
+          "name": "coverHash"
+        },
+        {
+          "id": "5:8589299758886535308",
+          "name": "size"
+        },
+        {
+          "id": "6:6195424020206431437",
+          "name": "rate"
+        },
+        {
+          "id": "7:121830449601420224",
+          "name": "estimate"
+        },
+        {
+          "id": "8:143887678491252219",
+          "name": "name"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:189325821303475535",
+      "lastPropertyId": "5:3504896489319163897",
+      "name": "MsgBean",
+      "properties": [
+        {
+          "id": "1:4136092211043542451",
+          "name": "id"
+        },
+        {
+          "id": "2:1934407078219895339",
+          "name": "conversationId"
+        },
+        {
+          "id": "3:4688088638173356057",
+          "name": "fromId"
+        },
+        {
+          "id": "4:8934221106617309008",
+          "name": "msg"
+        },
+        {
+          "id": "5:3504896489319163897",
+          "name": "time"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:189325821303475535",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

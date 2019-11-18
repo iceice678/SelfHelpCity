@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="FlycoDialog_colorPrimary">#3F51B5</color>
+    <color name="FlycoDialog_colorPrimaryDark">#303F9F</color>
+    <color name="FlycoDialog_colorAccent">#FF4081</color>
+
+    <color name="FlycoDialog_gray">#edecec</color>
+    <color name="FlycoDialog_white">#ffffff</color>
+
+    //toast
+    <color name="FlycoDialog_error">#94ff0000</color>
+    <color name="FlycoDialog_info">#ed485dff</color>
+    <color name="FlycoDialog_warning">#c9ffa048</color>
+    <color name="FlycoDialog_success">#d948ff70</color>
+
+    <color name="FlycoDialog_transparent">#00000000</color> <!-- 透明 -->
+
+</resources>

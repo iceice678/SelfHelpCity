@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">取消</string>
+    <string name="confirm">確定</string>
+    <string name="carry_on">繼續</string>
+</resources>

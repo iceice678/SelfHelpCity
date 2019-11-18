@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="FlycoDialog_AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/FlycoDialog_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/FlycoDialog_colorPrimaryDark</item>
+        <item name="colorAccent">@color/FlycoDialog_colorAccent</item>
+        <item name="android:textColorPrimary">@color/FlycoDialog_white</item>
+    </style>
+
+    <style name="FlycoDialog_myDialogAnim" parent="android:Animation">
+
+        <!-- 进入时的动画 -->
+        <!--<item name="@android:windowEnterAnimation">@anim/dialog_enter</item>-->
+        <!-- 退出时的动画 -->
+        <!--<item name="@android:windowExitAnimation">@anim/dialog_exit</item>-->
+    </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/FlycoDialog_transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+</resources>

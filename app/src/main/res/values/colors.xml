@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+    <color name="colorPrimary">#222527</color>
+    <color name="color_title" >#272b31</color>
+    <color name="colorPrimaryDark">#222527</color>
+    <color name="colorAccent">#222527</color>
+    <color name="colorWrite">#FFFFFF</color>
+    <color name="downBackround">#f6f6f6</color>
+    <color name="issueFont">#606060</color>
+    <color name="issueFont_me">#66FFFFFF</color>
+    <color name="version_welcome">#80FFFFFF</color>
+    <color name="videoName">#131313</color>
+    <color name="down_tv_video_name">#404040</color>
+    <color name="down_tv_down">#999999</color>
+    <color name="topup_me_line">#33E5E5E5</color>
+    <color name="topup_me_title">#212121</color>
+    <color name="down_pb">#2DBEB1</color>
+    <color name="ledgement">#ecedef</color>
+    <color name="title_background">#26292F</color>
+    <color name="progress_text">#48495F</color>
+    <color name="user_name_text">#232323</color>
+    <color name="wallet_address">#66FFFFFF</color>
+    <color name="conversion_address">#4DFFFFFF</color>
+    <color name="accountinfo">#323431</color>
+    <color name="color_view_me">#1AFFFFFF</color>
+    <color name="log_off">#272a31</color>
+    <color name="chat_username">#333333</color>
+    <color name="chat_line">#e6e6e6</color>
+    <color name="me_background">#1e1c2a</color>
+    <color name="userinfo_text">#000</color>
+    <color name="userinfo_background">#33000000</color>
+    <color name="create_account">#37467a</color>
+    <color name="import_account_tutorial">#545476</color>
+    <color name="create_account_success">#f0f0f0</color>
+    <color name="account_wallet">#9b9b9b</color>
+    <color name="account_wallet_address">#1e1f1e</color>
+    <color name="topup_cancel">#181818</color>
+    <color name="scan_prompt">#c8c8c8</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="gray">#cccccc</color>
+
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+
+    <color name="mask_color">#88888888</color>
+    <color name="check_bg">#f2f2f2</color>
+    <color name="un_press_color">#9C27B0</color>
+</resources>

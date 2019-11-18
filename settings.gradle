@@ -1,0 +1,2 @@
+include ':app', ':baselibrary', ':imageloadlibrary', ':okhttplibrary', ':FlycoDialog'
+rootProject.name='SelfHelpCity'

@@ -1,0 +1,58 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:2956699098130979989",
+      "lastPropertyId": "8:6619705021582847627",
+      "name": "HotBean",
+      "properties": [
+        {
+          "id": "1:6176866655216082500",
+          "name": "id"
+        },
+        {
+          "id": "2:6727941799523167380",
+          "name": "wallet"
+        },
+        {
+          "id": "3:6402694742573278353",
+          "name": "hash"
+        },
+        {
+          "id": "4:2063085865537914863",
+          "name": "coverHash"
+        },
+        {
+          "id": "5:3768753585170224049",
+          "name": "size"
+        },
+        {
+          "id": "6:1337740531169688917",
+          "name": "rate"
+        },
+        {
+          "id": "7:5133647408461165814",
+          "name": "estimate"
+        },
+        {
+          "id": "8:6619705021582847627",
+          "name": "name"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:2956699098130979989",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
