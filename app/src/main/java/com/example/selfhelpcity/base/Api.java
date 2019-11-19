@@ -8,10 +8,17 @@ public class Api {
     public static final long CONSTANT_BALANCE = 1000000000000000000L;
 
     public static final int PAGE_SIZE = 20;
-    public static final String BASE_URL = Constant.IS_DEBUG ? "http://127.0.0.1:8080/ipns/" : "http://127.0.0.1:8080/ipns/";
+    public static final String BASE_URL = "49.232.155.148/";
+    //退出登录
+    public static final String LOGOUT = BASE_URL + "logout";
+    //获得室友列表
+    public static final String GET_PEOPLE_LIST = BASE_URL + "getShiyou";
+    //获得房源列表
+    public static final String GET_COMMUNITY_LIST = BASE_URL + "getFangYuanList";
+    //注册
+    public static final String REGISTER = BASE_URL + "register2";
+    //登录
+    public static final String LOGIN = BASE_URL + "login2";
 
-    public static final String IPFS_URL = Constant.IS_DEBUG ? "http://127.0.0.1:5001/api/v0/" : "http://127.0.0.1:5001/api/v0/";
-
-    public static final String BASE_URL_IMAGE = Constant.IS_DEBUG ? "http://127.0.0.1:8080/ipfs/" : "http://127.0.0.1:8080/ipfs/";
 
 }

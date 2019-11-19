@@ -60,9 +60,10 @@ dependencies {
     implementation project(path: ':imageloadlibrary')
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
     implementation project(path: ':FlycoDialog')
+    implementation project(path: ':okgo')
 
 
-    implementation 'com.contrarywind:Android-PickerView:4.1.6'
+//    implementation 'com.contrarywind:Android-PickerView:4.1.6'
 }
 //objectbox 数据库 apply last
 apply plugin: 'io.objectbox'
