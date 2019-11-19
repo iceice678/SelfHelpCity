@@ -13,6 +13,8 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.DBCookieStore;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -48,6 +50,15 @@ public class MyApplication extends Application {
         initObjectBox();
         initFolder();
         initOkGo();
+
+        OkHttpClient okHttpClient= new OkHttpClient.Builder()
+                .addInterceptor(new LoggerInterceptor("TAG"))
+                .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+                .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                //其他配置
+                .build();
+
+        OkHttpUtils.initClient(okHttpClient);
     }
 
     private void initOkGo() {

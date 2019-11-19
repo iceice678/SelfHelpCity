@@ -54,23 +54,23 @@ public class ReleaseActivity extends BaseActivity implements IReleaseView {
 
     @Override
     protected void initData() {
-        list = new ArrayList<>();
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        releaseAdapter.addData(list);
+//        list = new ArrayList<>();
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        releaseAdapter.addData(list);
     }
 
     @Override

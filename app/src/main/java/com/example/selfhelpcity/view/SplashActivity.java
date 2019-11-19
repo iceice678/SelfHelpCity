@@ -6,21 +6,24 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
 import com.example.selfhelpcity.base.Constant;
+import com.example.selfhelpcity.bean.db.CommuityBean;
+import com.example.selfhelpcity.bean.db.peopleBean;
+import com.example.selfhelpcity.model.ObjectBox;
 import com.example.selfhelpcity.services.KeepLiveService;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.Callback;
-import com.lzy.okgo.model.Progress;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.json.JSONArray;
+import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * 欢迎页
@@ -77,47 +80,118 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        OkGo.<JSONArray>get(Api.GET_PEOPLE_LIST).tag(this).execute(new Callback<JSONArray>() {
-            @Override
-            public void onStart(Request<JSONArray, ? extends Request> request) {
+//        OkGo.<String>get(Api.GET_PEOPLE_LIST).tag(this).execute(new Callback<String>() {
+//            @Override
+//            public void onStart(Request<String, ? extends Request> request) {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(Response<String> response) {
+//                Log.d("ljyljy", "onSuccess: " + response);
+//                Log.d("ljyljy", "onSuccess: " + response.getRawResponse().body());
+////              ResponseBody jsonArray=response.getRawResponse().body();
+//                Gson gson = new Gson();
+//                peopleBean homeNewsBean = gson.fromJson(response.getRawResponse().body().toString(), peopleBean.class);
+////                list.get(0).getAge();
+////                list.get(0).getAge();
+//                Log.d("ljyljy", "onSuccess: " + homeNewsBean.getAge());
+//            }
+//
+//            @Override
+//            public void onCacheSuccess(Response<String> response) {
+//
+//            }
+//
+//            @Override
+//            public void onError(Response<String> response) {
+//                Log.d("ljyljy", "onError: " + response.code());
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//
+//            }
+//
+//            @Override
+//            public void uploadProgress(Progress progress) {
+//
+//            }
+//
+//            @Override
+//            public void downloadProgress(Progress progress) {
+//
+//            }
+//
+//            @Override
+//            public String convertResponse(okhttp3.Response response) throws Throwable {
+//                return null;
+//            }
+//        });
+        getDataFormNet(Api.GET_PEOPLE_LIST);
+        getDataFormNetCommunity(Api.GET_COMMUNITY_LIST);
+    }
 
-            }
+    private void getDataFormNetCommunity(String getCommunityList) {
+        OkHttpUtils
+                .get()
+                .url(getCommunityList)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.d("ljy", e.getMessage());
+                    }
 
-            @Override
-            public void onSuccess(Response<JSONArray> response) {
-                Log.d("ljyljy", "onSuccess: "+response.body());
-            }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d("ljyc", response);
+                        ProcessDataCommunity(response);
+                    }
 
-            @Override
-            public void onCacheSuccess(Response<JSONArray> response) {
+                });
+    }
 
-            }
+    private void ProcessDataCommunity(String response) {
+        if (response != null) {
+            List<CommuityBean> homeBean = JSON.parseArray(response, CommuityBean.class);
+//            result = homeBean.getResult();
+//            Log.d("ljy", result.getHot_info().get(0).getName());
+            Log.d("ljyc", "ProcessData: " + homeBean.get(0).getAddress());
+            ObjectBox.addCommuityToDB(homeBean);
+        }
+    }
 
-            @Override
-            public void onError(Response<JSONArray> response) {
-                Log.d("ljyljy", "onError: "+response.code());
-            }
+    private void getDataFormNet(String url) {
+        OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.d("ljy", e.getMessage());
+                    }
 
-            @Override
-            public void onFinish() {
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d("ljy", response);
+                        ProcessData(response);
+                    }
 
-            }
+                });
+    }
 
-            @Override
-            public void uploadProgress(Progress progress) {
+    private void ProcessData(String json) {
+        if (json != null) {
+            List<peopleBean> homeBean = JSON.parseArray(json, peopleBean.class);
+//            result = homeBean.getResult();
+//            Log.d("ljy", result.getHot_info().get(0).getName());
+            Log.d("ljy", "ProcessData: " + homeBean.get(0).getAge());
+            ObjectBox.addMessageToDB(homeBean);
+        }
 
-            }
 
-            @Override
-            public void downloadProgress(Progress progress) {
-
-            }
-
-            @Override
-            public JSONArray convertResponse(okhttp3.Response response) throws Throwable {
-                return null;
-            }
-        });
     }
 
     @Override

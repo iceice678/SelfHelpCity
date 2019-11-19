@@ -61,9 +61,14 @@ dependencies {
     implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
     implementation project(path: ':FlycoDialog')
     implementation project(path: ':okgo')
-
-
+    implementation 'com.kongzue.baseokhttp_v3:baseokhttp_v3:3.1.5'
+    implementation 'com.google.code.gson:gson:2.8.5'
 //    implementation 'com.contrarywind:Android-PickerView:4.1.6'
+
+    //okhttp
+    implementation 'com.zhy:okhttputils:2.6.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.3'
+    implementation 'com.alibaba:fastjson:1.1.71.android'
 }
 //objectbox 数据库 apply last
 apply plugin: 'io.objectbox'

@@ -75,7 +75,6 @@
         style="@style/style_login_btn"
         android:layout_marginTop="100dp"
         android:background="@drawable/btn_radius_bg"
-        android:enabled="false"
         android:text="退出登录"
         android:textColor="#ffffff" />
 </LinearLayout>

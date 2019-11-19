@@ -27,6 +27,7 @@ import com.example.selfhelpcity.adapter.ListDropDownAdapter;
 import com.example.selfhelpcity.adapter.ReleaseAdapter;
 import com.example.selfhelpcity.base.BaseActivity;
 import com.example.selfhelpcity.bean.ReleaseBean;
+import com.example.selfhelpcity.model.ObjectBox;
 import com.example.selfhelpcity.util.KeyboardStateObserver;
 import com.example.selfhelpcity.widget.DropDownMenu;
 import com.google.android.material.navigation.NavigationView;
@@ -143,23 +144,24 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        list = new ArrayList<>();
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        list.add(new ReleaseBean());
-        releaseAdapter.addData(list);
+//        list = new ArrayList<>();
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        list.add(new ReleaseBean());
+//        releaseAdapter.addData(list);
+        releaseAdapter.setNewData(ObjectBox.getCommuityBeanBox().getAll());
     }
 
     @Override

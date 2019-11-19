@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.EditText;
@@ -15,10 +16,14 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
+import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 /**
  * @author CYH06
@@ -55,6 +60,11 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void initView() {
         genderIndex = SPUtils.getInstance(getBaseContext()).getInt("checkGender");
+        TextChange textChange = new TextChange();
+        registerEtPhone.addTextChangedListener(textChange);
+        registerEtConfirmPassword.addTextChangedListener(textChange);
+        registerEtAccount.addTextChangedListener(textChange);
+        registerEtPassword.addTextChangedListener(textChange);
     }
 
     @Override
@@ -78,12 +88,46 @@ public class RegisterActivity extends BaseActivity {
                 showSexChooseDialog();
                 break;
             case R.id.tv_register:
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                finish();
+                String username = registerEtAccount.getText().toString().trim();
+                String pwd = registerEtPassword.getText().toString().trim();
+                String cpwd = registerEtConfirmPassword.getText().toString().trim();
+                String tel = registerEtPhone.getText().toString().trim();
+                if (!pwd.equals(cpwd)) {
+                    showToast("两次密码不一致 ，请重新输入");
+                    return;
+                }
+                getDataFormNet(username, pwd, cpwd, tel);
                 break;
             default:
                 break;
         }
+    }
+
+
+    private void getDataFormNet(String username, String password, String confirmPassword, String tel) {
+        OkHttpUtils
+                .post()
+                .addParams("username", username)
+                .addParams("password", password)
+                .addParams("confirm_password", confirmPassword)
+                .addParams("telephone", tel)
+                .url(Api.REGISTER)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showToast("注册失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        showToast("注册成功");
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        finish();
+//                        ProcessData(response);
+                    }
+
+                });
     }
 
     /**
@@ -123,8 +167,7 @@ public class RegisterActivity extends BaseActivity {
             boolean sign = registerEtPassword.getText().length() > 0;
             boolean sign3 = registerEtConfirmPassword.getText().length() > 0;
             boolean sign4 = registerEtPhone.getText().length() > 0;
-            boolean sign5 = registerGender.getText().length() > 0;
-            if (sign2 & sign & sign3 & sign4 & sign5) {
+            if (sign2 & sign & sign3 & sign4) {
                 tvRegister.setEnabled(true);
                 tvRegister.setTextColor(Color.parseColor("#000000"));
             }

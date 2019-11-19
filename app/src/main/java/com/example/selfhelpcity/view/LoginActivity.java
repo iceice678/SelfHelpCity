@@ -10,10 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.selfhelpcity.R;
+import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+
 /**
  * 登录界面
  */
@@ -58,8 +63,9 @@ public class LoginActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                String user = etAccount.getText().toString().trim();
+                String pwd = etPassword.getText().toString().trim();
+                getDataFormNet(user, pwd);
                 break;
             case R.id.tv_create_account:
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
@@ -69,6 +75,29 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    private void getDataFormNet(String username, String password) {
+        OkHttpUtils
+                .post()
+                .addParams("username", username)
+                .addParams("password", password)
+                .url(Api.LOGIN)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showToast("登录失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        showToast("登录成功");
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+//                        ProcessData(response);
+                    }
+
+                });
+    }
 
     // EditText监听器
     class TextChange implements TextWatcher {
