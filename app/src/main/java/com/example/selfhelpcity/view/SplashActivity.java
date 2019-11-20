@@ -25,6 +25,7 @@ import java.util.List;
 
 import okhttp3.Call;
 
+
 /**
  * 欢迎页
  */
@@ -128,14 +129,14 @@ public class SplashActivity extends BaseActivity {
 //                return null;
 //            }
 //        });
-        getDataFormNet(Api.GET_PEOPLE_LIST);
-        getDataFormNetCommunity(Api.GET_COMMUNITY_LIST);
+        getDataFormNet();
+        getDataFormNetCommunity();
     }
 
-    private void getDataFormNetCommunity(String getCommunityList) {
+    private void getDataFormNetCommunity() {
         OkHttpUtils
                 .get()
-                .url(getCommunityList)
+                .url(Api.GET_COMMUNITY_LIST)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -162,10 +163,10 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
-    private void getDataFormNet(String url) {
+    private void getDataFormNet() {
         OkHttpUtils
                 .get()
-                .url(url)
+                .url(Api.GET_PEOPLE_LIST)
                 .build()
                 .execute(new StringCallback() {
                     @Override

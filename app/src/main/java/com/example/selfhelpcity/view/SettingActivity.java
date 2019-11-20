@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
+import com.example.selfhelpcity.base.Constant;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -75,6 +77,7 @@ public class SettingActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         showToast("退出登录成功");
+                        SPUtils.getInstance(SettingActivity.this).put(Constant.SP_KEY_WALLET_ADDRESS, "");
                         startActivity(new Intent(SettingActivity.this, LoginActivity.class));
                         finish();
 //                        ProcessData(response);

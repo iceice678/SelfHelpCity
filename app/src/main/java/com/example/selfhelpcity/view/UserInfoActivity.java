@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import comenjoy.com.imageloadlibrary.GlideUtil;
 
@@ -51,6 +53,8 @@ public class UserInfoActivity extends BaseActivity {
     TextView auGender;
     @BindView(R.id.au_phone_num)
     EditText auPhoneNum;
+    @BindView(R.id.au_gender_ll)
+    LinearLayout auGenderLl;
 
     private String[] sexArry = new String[]{"女", "男"};// 性别选择
     private int genderIndex;
@@ -91,7 +95,7 @@ public class UserInfoActivity extends BaseActivity {
         genderIndex = SPUtils.getInstance(getBaseContext()).getInt("checkGender");
     }
 
-    @OnClick({R.id.userinfo_back, R.id.au_head_portrait, R.id.au_gender})
+    @OnClick({R.id.userinfo_back, R.id.au_head_portrait, R.id.au_gender_ll})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.userinfo_back:
@@ -100,8 +104,10 @@ public class UserInfoActivity extends BaseActivity {
             case R.id.au_head_portrait:
                 showSelectDialog();
                 break;
-            case R.id.au_gender:
+            case R.id.au_gender_ll:
                 showSexChooseDialog();
+                break;
+            default:
                 break;
         }
     }
@@ -141,6 +147,7 @@ public class UserInfoActivity extends BaseActivity {
         }
 
     }
+
     /**
      * 性别选择框
      */
@@ -194,6 +201,7 @@ public class UserInfoActivity extends BaseActivity {
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(intent, REQ_SELECT_PHOTO);
     }
+
     private void checkAppPermission(int i) {
         AndPermission.with(this)
                 .runtime()
@@ -215,5 +223,12 @@ public class UserInfoActivity extends BaseActivity {
                     }
                 }).start();
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
+import com.example.selfhelpcity.base.Constant;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -91,6 +93,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         showToast("登录成功");
+                        SPUtils.getInstance(LoginActivity.this).put(Constant.SP_KEY_WALLET_ADDRESS, password);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
 //                        ProcessData(response);

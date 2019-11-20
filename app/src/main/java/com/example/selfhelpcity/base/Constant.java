@@ -24,7 +24,7 @@ public class Constant {
      */
     public static final String SP_KEY_HEADPORTRAIT = "auHeadPortrait";
     /**
-     * 钱包地址
+     * 用户登陆信息
      */
     public static final String SP_KEY_WALLET_ADDRESS = "walletAddress";
     /**

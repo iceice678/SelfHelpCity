@@ -1,135 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <include layout="@layout/title_add_release" />
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="20dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_add_release" />
+
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/add_release_img1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:scaleType="centerCrop"
-            android:layout_weight="1"
             android:src="@mipmap/add" />
 
-        <ImageView
-            android:id="@+id/add_release_img2"
-            android:layout_width="0dp"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:src="@mipmap/add" />
+
+        <EditText
+
+            android:id="@+id/add_release_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:hint="小区名字"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/add_release_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="房源详细地址"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/add_release_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="租售价格"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/add_release_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="面积（单位 m）"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/add_release_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:maxLines="1"
+            android:text="请选择室友性别"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/add_release_standard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:hint="请输入您的其他要求"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="（填写完所有字段才能发布哦）"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            style="@style/style_login_btn"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_check_login"
+            android:enabled="false"
+            android:text="确认发布"
+            android:textColor="#66FFFFFF" />
     </LinearLayout>
-
-    <EditText
-
-        android:id="@+id/add_release_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:hint="小区名字"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/add_release_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:hint="房源详细地址"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/add_release_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:hint="租售价格"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/add_release_area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:hint="面积（单位 m）"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/add_release_gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:text="请选择室友性别"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/add_release_standard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:hint="请输入您的其他要求"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="14sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="（填写完所有字段才能发布哦）"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/tv_register"
-        style="@style/style_login_btn"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/btn_check_login"
-        android:enabled="false"
-        android:text="确认发布"
-        android:textColor="#66FFFFFF" />
-</LinearLayout>
+</ScrollView>

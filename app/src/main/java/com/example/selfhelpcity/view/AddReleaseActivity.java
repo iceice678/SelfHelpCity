@@ -18,8 +18,6 @@ public class AddReleaseActivity extends BaseActivity {
     ImageView addReleaseBack;
     @BindView(R.id.add_release_img1)
     ImageView addReleaseImg1;
-    @BindView(R.id.add_release_img2)
-    ImageView addReleaseImg2;
     @BindView(R.id.add_release_name)
     EditText addReleaseName;
     @BindView(R.id.add_release_address)
@@ -38,7 +36,6 @@ public class AddReleaseActivity extends BaseActivity {
     @Override
     protected int getContentView() {
         return R.layout.activity_add_release;
-//        return R.layout.activity_add_release;
     }
 
     @Override
@@ -62,15 +59,13 @@ public class AddReleaseActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.add_release_back, R.id.add_release_img1, R.id.add_release_img2, R.id.add_release_gender, R.id.tv_register})
+    @OnClick({R.id.add_release_back, R.id.add_release_img1, R.id.add_release_gender, R.id.tv_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_release_back:
                 finish();
                 break;
             case R.id.add_release_img1:
-                break;
-            case R.id.add_release_img2:
                 break;
             case R.id.add_release_gender:
                 break;
