@@ -81,52 +81,17 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-//        OkGo.<String>get(Api.GET_PEOPLE_LIST).tag(this).execute(new Callback<String>() {
-//            @Override
-//            public void onStart(Request<String, ? extends Request> request) {
-//
-//            }
-//
+//        OkGo.<String>get(Api.GET_PEOPLE_LIST).execute(new com.lzy.okgo.callback.StringCallback() {
 //            @Override
 //            public void onSuccess(Response<String> response) {
-//                Log.d("ljyljy", "onSuccess: " + response);
-//                Log.d("ljyljy", "onSuccess: " + response.getRawResponse().body());
-////              ResponseBody jsonArray=response.getRawResponse().body();
-//                Gson gson = new Gson();
-//                peopleBean homeNewsBean = gson.fromJson(response.getRawResponse().body().toString(), peopleBean.class);
-////                list.get(0).getAge();
-////                list.get(0).getAge();
-//                Log.d("ljyljy", "onSuccess: " + homeNewsBean.getAge());
-//            }
-//
-//            @Override
-//            public void onCacheSuccess(Response<String> response) {
-//
+//                Type type = new TypeToken<List<person>>(){}.getType();
+//                List<person> peopleBeans = new Gson().fromJson(response.body(), type);
+//                Log.d("ljyljy", "onSuccess: "+peopleBeans.get(0).getPassword());
 //            }
 //
 //            @Override
 //            public void onError(Response<String> response) {
-//                Log.d("ljyljy", "onError: " + response.code());
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//
-//            @Override
-//            public void uploadProgress(Progress progress) {
-//
-//            }
-//
-//            @Override
-//            public void downloadProgress(Progress progress) {
-//
-//            }
-//
-//            @Override
-//            public String convertResponse(okhttp3.Response response) throws Throwable {
-//                return null;
+//                super.onError(response);
 //            }
 //        });
         getDataFormNet();
@@ -147,13 +112,13 @@ public class SplashActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.d("ljyc", response);
-                        ProcessDataCommunity(response);
+                        processDataCommunity(response);
                     }
 
                 });
     }
 
-    private void ProcessDataCommunity(String response) {
+    private void processDataCommunity(String response) {
         if (response != null) {
             List<CommuityBean> homeBean = JSON.parseArray(response, CommuityBean.class);
 //            result = homeBean.getResult();
