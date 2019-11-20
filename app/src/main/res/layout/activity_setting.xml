@@ -8,12 +8,13 @@
     <include layout="@layout/title_setting" />
 
     <LinearLayout
+        android:id="@+id/modify_pwd"
         style="@style/user_information_list_entry_style"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             style="@style/user_information_interface"
-            android:text="私人设置" />
+            android:text="修改密码" />
 
         <ImageView
             style="@style/user_information_interface_click_on_the_icon"
