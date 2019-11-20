@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_modity_pwd" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:hint="请输入旧密码"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_new_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="请输入新密码"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_new_confirmpwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="请重复输入新密码"
+        android:inputType="textPassword"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        style="@style/style_login_btn"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_check_login"
+        android:text="修改密码"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

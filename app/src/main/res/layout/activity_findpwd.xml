@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_findpwd" />
+
+    <EditText
+        android:id="@+id/et_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:hint="请输入要找回密码的账号"
+        android:inputType="text"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:hint="请验证密保手机"
+        android:inputType="phone"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/tv_login"
+        style="@style/style_login_btn"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_check_login"
+        android:text="找回密码"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

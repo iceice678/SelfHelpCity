@@ -37,6 +37,8 @@
         <activity android:name=".view.FeedBackActivity" />
         <activity android:name=".view.ReleaseInfoActivity" />
         <activity android:name=".view.AddReleaseActivity" />
+        <activity android:name=".view.FindPwdActivity" />
+        <activity android:name=".view.ModifyPwdActivity" />
 
 
         <meta-data

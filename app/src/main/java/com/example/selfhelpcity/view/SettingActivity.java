@@ -34,6 +34,8 @@ public class SettingActivity extends BaseActivity {
     ConstraintLayout toolbar;
     @BindView(R.id.au_gender_ll)
     LinearLayout auGenderLl;
+    @BindView(R.id.modify_pwd)
+    LinearLayout modifyPwd;
 
     @Override
     protected int getContentView() {
@@ -84,7 +86,7 @@ public class SettingActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.setting_back, R.id.tv_loginout})
+    @OnClick({R.id.setting_back, R.id.tv_loginout, R.id.modify_pwd})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.setting_back:
@@ -93,8 +95,12 @@ public class SettingActivity extends BaseActivity {
             case R.id.tv_loginout:
                 getDataFormNet();
                 break;
+            case R.id.modify_pwd:
+                startActivity(new Intent(SettingActivity.this, ModifyPwdActivity.class));
+                break;
             default:
                 break;
         }
     }
+
 }
