@@ -58,6 +58,22 @@ public class UserInfoActivity extends BaseActivity implements IUserInfoView {
     EditText auPhoneNum;
     @BindView(R.id.au_gender_ll)
     LinearLayout auGenderLl;
+    @BindView(R.id.au_username_ll)
+    LinearLayout auUsernameLl;
+    @BindView(R.id.au_personal_profil)
+    EditText auPersonalProfil;
+    @BindView(R.id.au_personal_profile_ll)
+    LinearLayout auPersonalProfileLl;
+    @BindView(R.id.au_age)
+    EditText auAge;
+    @BindView(R.id.au_age_ll)
+    LinearLayout auAgeLl;
+    @BindView(R.id.au_phone_num_ll)
+    LinearLayout auPhoneNumLl;
+    @BindView(R.id.au_ll)
+    LinearLayout auLl;
+    @BindView(R.id.add_user_info)
+    TextView addUserInfo;
     private UserInfoPresenter presenter;
     private String[] sexArry = new String[]{"女", "男"};// 性别选择
     private int genderIndex;
@@ -98,7 +114,7 @@ public class UserInfoActivity extends BaseActivity implements IUserInfoView {
         genderIndex = SPUtils.getInstance(getBaseContext()).getInt("checkGender");
     }
 
-    @OnClick({R.id.userinfo_back, R.id.au_head_portrait, R.id.au_gender_ll})
+    @OnClick({R.id.userinfo_back, R.id.au_head_portrait, R.id.au_gender_ll, R.id.add_user_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.userinfo_back:
@@ -109,6 +125,14 @@ public class UserInfoActivity extends BaseActivity implements IUserInfoView {
                 break;
             case R.id.au_gender_ll:
                 showSexChooseDialog();
+                break;
+            case R.id.add_user_info:
+                String username = auUsername.getText().toString().trim();
+                String personal = auPersonalProfil.getText().toString().trim();
+                String age = auAge.getText().toString().trim();
+                String sex = auGender.getText().toString().trim();
+                String phone = auPhoneNum.getText().toString().trim();
+                presenter.setUserInfo(username, personal, age, sex, phone);
                 break;
             default:
                 break;
@@ -170,13 +194,6 @@ public class UserInfoActivity extends BaseActivity implements IUserInfoView {
     private void showSelectDialog() {
         String[] items = {"拍照", "从相册选择"};
         DialogUtil.getInstance(this).actionSheetDialog(items, (AdapterView<?> parent, View view, int position, long id) -> {
-//            if (position == 0) {
-//               checkAppPermission(0);
-//            } else if (position == 1) {
-//              checkAppPermission(1);
-//            } else {
-//
-//          }
             checkAppPermission(position);
         });
     }
@@ -230,10 +247,13 @@ public class UserInfoActivity extends BaseActivity implements IUserInfoView {
 
     @Override
     public void updateInfo(userInfo.DataBean dataBean) {
-        if (dataBean != null){
+        if (dataBean != null) {
             auUsername.setText(dataBean.getUsername());
             auGender.setText(dataBean.getSex());
-            auPhoneNum.setText(dataBean.getPhoto());
+            auAge.setText(dataBean.getAge());
+            auPersonalProfil.setText(dataBean.getGxqm());
+            auPhoneNum.setText(dataBean.getTelephone());
         }
     }
+
 }

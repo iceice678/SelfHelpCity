@@ -39,7 +39,7 @@ public class Constant {
     public static final String SP_KEY_SERVER_PUBLIC_KEY = "serverPublicKey";
     public static final String SP_KEY_PRIVATE_KEY = "privateKey";
     public static final String SP_KEY_PUBLIC_KEY = "publicKey";
-
+    public static final String USER_ID_SP = "user_id";
     /* end SharedPreferences key */
 
     public static final String PATH_IPFS_DOWNLOAD = PathUtils.getExternalStoragePath() + "/Ipfs/Download/";
@@ -48,7 +48,7 @@ public class Constant {
     public static Context appContext;
     public static String userId = "801138";
 
-    public static int id;
+    public static int USER_ID=0;
 
     public static String IM_SERVER_URL = "demo.starrtc.com:19903";
 

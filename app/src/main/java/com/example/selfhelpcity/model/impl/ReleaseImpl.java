@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.example.selfhelpcity.base.Api;
+import com.example.selfhelpcity.base.Constant;
 import com.example.selfhelpcity.bean.MyRelease;
 import com.example.selfhelpcity.model.biz.IReleaseBiz;
 import com.example.selfhelpcity.model.listener.CallbackListener;
@@ -14,9 +15,10 @@ import okhttp3.Call;
 
 public class ReleaseImpl implements IReleaseBiz {
     @Override
-    public void getReleaseInfo(int id, CallbackListener<MyRelease> listener) {
+    public void getReleaseInfo( CallbackListener<MyRelease> listener) {
         OkHttpUtils
                 .post()
+                .addParams("user_id", String.valueOf(Constant.USER_ID))
                 .url(Api.GET_MY_PUBLISHED_LISTINGS)
                 .build()
                 .execute(new StringCallback() {

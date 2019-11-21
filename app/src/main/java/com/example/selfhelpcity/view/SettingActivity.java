@@ -14,6 +14,7 @@ import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
 import com.example.selfhelpcity.base.Constant;
+import com.example.selfhelpcity.model.ObjectBox;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -80,6 +81,8 @@ public class SettingActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                         showToast("退出登录成功");
                         SPUtils.getInstance(SettingActivity.this).put(Constant.SP_KEY_WALLET_ADDRESS, "");
+                        SPUtils.getInstance(SettingActivity.this).put(Constant.USER_ID_SP, 0);
+//                        ObjectBox.getCommuityBeanBox().removeAll();
                         startActivity(new Intent(SettingActivity.this, LoginActivity.class));
                         finish();
 //                        ProcessData(response);

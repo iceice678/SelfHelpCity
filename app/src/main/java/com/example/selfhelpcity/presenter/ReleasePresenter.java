@@ -28,8 +28,8 @@ public class ReleasePresenter extends BasePresenter<IReleaseView> {
         biz = new ReleaseImpl();
     }
 
-    public void getInfo(int id) {
-        biz.getReleaseInfo(id, new CallbackListener<MyRelease>() {
+    public void getInfo() {
+        biz.getReleaseInfo(new CallbackListener<MyRelease>() {
             @Override
             public void success(MyRelease object) {
                 mView.updateInfo(object.getData());

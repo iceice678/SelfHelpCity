@@ -37,6 +37,7 @@ public class CommuityBean {
     private String jianjie;
     private long fbTime;
     private String picture;
+    private boolean isCollection;
 
 
 }

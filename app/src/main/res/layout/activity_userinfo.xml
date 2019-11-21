@@ -60,6 +60,32 @@
         <View style="@style/user_information_interface_dividing_line" />
 
         <LinearLayout
+            android:id="@+id/au_personal_profile_ll"
+            style="@style/user_information_list_entry_style"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                style="@style/user_information_interface"
+                android:text="个人简介" />
+
+            <requestFocus />
+
+            <EditText
+                android:id="@+id/au_personal_profil"
+                style="@style/user_information_interface_input_box"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ellipsize="end"
+                android:hint="@string/is_not_set"
+                android:inputType="text"
+                android:maxLength="15" />
+        </LinearLayout>
+
+        <View style="@style/user_information_interface_dividing_line" />
+
+        <LinearLayout
             android:id="@+id/au_gender_ll"
             style="@style/user_information_list_entry_style"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -70,9 +96,38 @@
 
             <TextView
                 android:id="@+id/au_gender"
-                android:textColor="#000"
                 style="@style/user_information_interface_information_details"
-                android:text="@string/is_not_set" />
+                android:background="@null"
+                android:maxLines="1"
+                android:text="@string/is_not_set"
+                android:textColor="#000" />
+
+            <ImageView
+                style="@style/user_information_interface_click_on_the_icon"
+                app:srcCompat="@mipmap/ic_me_unold" />
+        </LinearLayout>
+
+        <View style="@style/user_information_interface_dividing_line" />
+
+        <LinearLayout
+            android:id="@+id/au_age_ll"
+            style="@style/user_information_list_entry_style"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <TextView
+                style="@style/user_information_interface"
+                android:text="年龄" />
+
+            <EditText
+                android:id="@+id/au_age"
+                style="@style/user_information_interface_information_details"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textColorHint="#000"
+                android:hint="@string/is_not_set"
+                android:textColor="#000" />
 
             <ImageView
                 style="@style/user_information_interface_click_on_the_icon"

@@ -14,23 +14,29 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.adapter.ConstellationAdapter;
 import com.example.selfhelpcity.adapter.GirdDropDownAdapter;
 import com.example.selfhelpcity.adapter.ListDropDownAdapter;
 import com.example.selfhelpcity.adapter.ReleaseAdapter;
+import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
+import com.example.selfhelpcity.base.Constant;
 import com.example.selfhelpcity.bean.db.CommuityBean;
 import com.example.selfhelpcity.model.ObjectBox;
 import com.example.selfhelpcity.util.KeyboardStateObserver;
 import com.example.selfhelpcity.widget.DropDownMenu;
 import com.google.android.material.navigation.NavigationView;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +44,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+
+import static com.example.selfhelpcity.base.Constant.USER_ID;
 
 /**
  * 首页
@@ -142,10 +151,33 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+        releaseAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                CommuityBean commuityBean = (CommuityBean) adapter.getItem(position);
+                AppCompatCheckBox appCompatCheckBox = (AppCompatCheckBox) view;
+                if (commuityBean != null) {
+                    commuityBean.setCollection(appCompatCheckBox.isChecked());
+                    releaseAdapter.notifyItemChanged(position);
+                    Focus(appCompatCheckBox.isChecked(), commuityBean.getFyId());
+                }
+//                showToast("" + appCompatCheckBox.isChecked());
+            }
+        });
     }
+
+    private void Focus(boolean checked, int fyId) {
+        if (checked) {
+            addFocus(fyId);
+        } else {
+            deleteFocus(fyId);
+        }
+    }
+
 
     @Override
     protected void initData() {
+        USER_ID = SPUtils.getInstance(MainActivity.this).getInt(Constant.USER_ID_SP);
         List<CommuityBean> list = ObjectBox.getCommuityBeanBox().getAll();
         if (list != null) {
             releaseAdapter.setNewData(list);
@@ -323,5 +355,45 @@ public class MainActivity extends BaseActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void deleteFocus(int fyId) {
+        OkHttpUtils
+                .get()
+                .addParams("user_id", String.valueOf(Constant.USER_ID))
+                .addParams("fy_id", String.valueOf(fyId))
+                .url(Api.UNSUBSCRIBE)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showToast("取消收藏失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        showToast("取消收藏成功");
+                    }
+                });
+    }
+
+    private void addFocus(int fyId) {
+        OkHttpUtils
+                .get()
+                .addParams("user_id", String.valueOf(Constant.USER_ID))
+                .addParams("fy_id", String.valueOf(fyId))
+                .url(Api.ADD_ATTENTION)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        showToast("收藏失败");
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        showToast("收藏成功");
+                    }
+                });
     }
 }

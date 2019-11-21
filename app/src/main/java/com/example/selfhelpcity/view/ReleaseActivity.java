@@ -53,7 +53,7 @@ public class ReleaseActivity extends BaseActivity implements IReleaseView {
 
     @Override
     protected void initData() {
-//        releasePresenter.getInfo();
+        releasePresenter.getInfo();
     }
 
     @Override

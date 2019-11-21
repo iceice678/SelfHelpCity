@@ -92,11 +92,12 @@ public class RegisterActivity extends BaseActivity {
                 String pwd = registerEtPassword.getText().toString().trim();
                 String cpwd = registerEtConfirmPassword.getText().toString().trim();
                 String tel = registerEtPhone.getText().toString().trim();
+                String sex = registerGender.getText().toString().trim();
                 if (!pwd.equals(cpwd)) {
                     showToast("两次密码不一致 ，请重新输入");
                     return;
                 }
-                getDataFormNet(username, pwd, cpwd, tel);
+                getDataFormNet(username, pwd, cpwd, tel, sex);
                 break;
             default:
                 break;
@@ -104,13 +105,14 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    private void getDataFormNet(String username, String password, String confirmPassword, String tel) {
+    private void getDataFormNet(String username, String password, String confirmPassword, String tel, String sex) {
         OkHttpUtils
                 .post()
                 .addParams("username", username)
                 .addParams("password", password)
                 .addParams("confirm_password", confirmPassword)
                 .addParams("telephone", tel)
+                .addParams("sex", sex)
                 .url(Api.REGISTER)
                 .build()
                 .execute(new StringCallback() {

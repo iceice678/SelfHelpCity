@@ -10,17 +10,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.Api;
 import com.example.selfhelpcity.base.BaseActivity;
 import com.example.selfhelpcity.base.Constant;
+import com.example.selfhelpcity.bean.LoginInfo;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Call;
+
+import static com.example.selfhelpcity.base.Constant.USER_ID;
 
 /**
  * 登录界面
@@ -98,9 +103,12 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.d("userId", "onResponse: " + response+"/"+id);
+                        Log.d("userId", "onResponse: " + response + "/" + id);
                         showToast("登录成功");
+                        LoginInfo parse = JSON.parseObject(response, LoginInfo.class);
+                        Log.d("userId", "onResponse: " + parse.getData().getUser_id());
                         SPUtils.getInstance(LoginActivity.this).put(Constant.SP_KEY_WALLET_ADDRESS, password);
+                        SPUtils.getInstance(LoginActivity.this).put(Constant.USER_ID_SP, parse.getData().getUser_id());
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
 //                        ProcessData(response);
