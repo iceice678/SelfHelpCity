@@ -123,7 +123,7 @@ public class SplashActivity extends BaseActivity {
             List<CommuityBean> homeBean = JSON.parseArray(response, CommuityBean.class);
 //            result = homeBean.getResult();
 //            Log.d("ljy", result.getHot_info().get(0).getName());
-            Log.d("ljyc", "ProcessData: " + homeBean.get(0).getAddress());
+            Log.d("ljyc", "ProcessData: " + response);
             ObjectBox.addCommuityToDB(homeBean);
         }
     }
@@ -154,7 +154,7 @@ public class SplashActivity extends BaseActivity {
 //            result = homeBean.getResult();
 //            Log.d("ljy", result.getHot_info().get(0).getName());
             Log.d("ljy", "ProcessData: " + homeBean.get(0).getAge());
-            ObjectBox.addMessageToDB(homeBean);
+            ObjectBox.addPeopleList(homeBean);
         }
 
 

@@ -62,7 +62,7 @@ public class ObjectBox {
         }
     }
 
-    public static void addMessageToDB(List<peopleBean> file) {
+    public static void addPeopleList(List<peopleBean> file) {
         getPeopleBeanBox().removeAll();
         if (file != null) {
             peopleBeanBox.put(file);

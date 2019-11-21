@@ -48,6 +48,8 @@ public class Constant {
     public static Context appContext;
     public static String userId = "801138";
 
+    public static int id;
+
     public static String IM_SERVER_URL = "demo.starrtc.com:19903";
 
     public static boolean hasNewC2CMsg = false;

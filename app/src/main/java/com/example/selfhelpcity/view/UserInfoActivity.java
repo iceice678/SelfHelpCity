@@ -20,6 +20,9 @@ import com.comenjoysoft.baselibrary.util.SPUtils;
 import com.example.selfhelpcity.R;
 import com.example.selfhelpcity.base.BaseActivity;
 import com.example.selfhelpcity.base.Constant;
+import com.example.selfhelpcity.bean.userInfo;
+import com.example.selfhelpcity.model.iview.IUserInfoView;
+import com.example.selfhelpcity.presenter.UserInfoPresenter;
 import com.example.selfhelpcity.util.UriUtils;
 import com.flyco.DialogUtil;
 import com.yanzhenjie.permission.Action;
@@ -40,7 +43,7 @@ import comenjoy.com.imageloadlibrary.GlideUtil;
 /**
  * 个人信息界面
  */
-public class UserInfoActivity extends BaseActivity {
+public class UserInfoActivity extends BaseActivity implements IUserInfoView {
     @BindView(R.id.userinfo_back)
     ImageView userinfoBack;
     @BindView(R.id.userinfo_title)
@@ -55,7 +58,7 @@ public class UserInfoActivity extends BaseActivity {
     EditText auPhoneNum;
     @BindView(R.id.au_gender_ll)
     LinearLayout auGenderLl;
-
+    private UserInfoPresenter presenter;
     private String[] sexArry = new String[]{"女", "男"};// 性别选择
     private int genderIndex;
     private static final int REQ_TAKE_PHOTO = 10001;
@@ -71,7 +74,7 @@ public class UserInfoActivity extends BaseActivity {
 
     @Override
     protected void init(Bundle bundle) {
-
+        presenter = new UserInfoPresenter(this);
     }
 
     @Override
@@ -81,7 +84,7 @@ public class UserInfoActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        presenter.getUserInfo();
     }
 
     @Override
@@ -226,9 +229,11 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    public void updateInfo(userInfo.DataBean dataBean) {
+        if (dataBean != null){
+            auUsername.setText(dataBean.getUsername());
+            auGender.setText(dataBean.getSex());
+            auPhoneNum.setText(dataBean.getPhoto());
+        }
     }
 }

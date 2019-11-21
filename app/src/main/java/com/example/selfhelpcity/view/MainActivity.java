@@ -26,7 +26,7 @@ import com.example.selfhelpcity.adapter.GirdDropDownAdapter;
 import com.example.selfhelpcity.adapter.ListDropDownAdapter;
 import com.example.selfhelpcity.adapter.ReleaseAdapter;
 import com.example.selfhelpcity.base.BaseActivity;
-import com.example.selfhelpcity.bean.ReleaseBean;
+import com.example.selfhelpcity.bean.db.CommuityBean;
 import com.example.selfhelpcity.model.ObjectBox;
 import com.example.selfhelpcity.util.KeyboardStateObserver;
 import com.example.selfhelpcity.widget.DropDownMenu;
@@ -68,7 +68,6 @@ public class MainActivity extends BaseActivity {
     DrawerLayout drawlayout;
     @BindView(R.id.main_rv)
     RecyclerView mainRv;
-    private List<ReleaseBean> list;
     private DropDownMenu mDropDownMenu;
 
     private ReleaseAdapter releaseAdapter;
@@ -137,31 +136,21 @@ public class MainActivity extends BaseActivity {
         releaseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(MainActivity.this, ReleaseInfoActivity.class).putExtra("targetId", "801139"));
+                CommuityBean commuityBean = (CommuityBean) adapter.getItem(position);
+                if (commuityBean != null) {
+                    startActivity(new Intent(MainActivity.this, ReleaseInfoActivity.class).putExtra("commuityId", commuityBean.getFyId()));
+                }
             }
         });
     }
 
     @Override
     protected void initData() {
-//        list = new ArrayList<>();
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        releaseAdapter.addData(list);
-        releaseAdapter.setNewData(ObjectBox.getCommuityBeanBox().getAll());
+        List<CommuityBean> list = ObjectBox.getCommuityBeanBox().getAll();
+        if (list != null) {
+            releaseAdapter.setNewData(list);
+        }
+
     }
 
     @Override

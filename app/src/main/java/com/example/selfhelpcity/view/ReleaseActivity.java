@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.selfhelpcity.R;
+import com.example.selfhelpcity.adapter.MyReleaseAdapter;
 import com.example.selfhelpcity.adapter.ReleaseAdapter;
 import com.example.selfhelpcity.base.BaseActivity;
-import com.example.selfhelpcity.bean.ReleaseBean;
+import com.example.selfhelpcity.bean.MyRelease;
 import com.example.selfhelpcity.model.iview.IReleaseView;
 import com.example.selfhelpcity.presenter.ReleasePresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,8 +31,7 @@ public class ReleaseActivity extends BaseActivity implements IReleaseView {
     TextView releaseTitle;
     @BindView(R.id.release_rv)
     RecyclerView releaseRv;
-    private ReleaseAdapter releaseAdapter;
-    private List<ReleaseBean> list;
+    private MyReleaseAdapter releaseAdapter;
     private ReleasePresenter releasePresenter;
 
     @Override
@@ -47,30 +46,14 @@ public class ReleaseActivity extends BaseActivity implements IReleaseView {
 
     @Override
     protected void initView() {
-        releaseAdapter = new ReleaseAdapter();
+        releaseAdapter = new MyReleaseAdapter();
         releaseRv.setLayoutManager(new LinearLayoutManager(ReleaseActivity.this));
         releaseRv.setAdapter(releaseAdapter);
     }
 
     @Override
     protected void initData() {
-//        list = new ArrayList<>();
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        list.add(new ReleaseBean());
-//        releaseAdapter.addData(list);
+//        releasePresenter.getInfo();
     }
 
     @Override
@@ -90,7 +73,9 @@ public class ReleaseActivity extends BaseActivity implements IReleaseView {
     }
 
     @Override
-    public void updateInfo() {
-
+    public void updateInfo(List<MyRelease.DataBean> data) {
+        if (data != null) {
+            releaseAdapter.setNewData(data);
+        }
     }
 }

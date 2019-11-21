@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class LoginActivity extends BaseActivity {
     TextView tvLogin;
     @BindView(R.id.tv_create_account)
     TextView tvCreateAccount;
+    @BindView(R.id.tv_find_password)
+    TextView tvFindPassword;
 
     @Override
     protected int getContentView() {
@@ -61,7 +64,7 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.tv_login, R.id.tv_create_account})
+    @OnClick({R.id.tv_login, R.id.tv_create_account, R.id.tv_find_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
@@ -71,6 +74,9 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.tv_create_account:
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                break;
+            case R.id.tv_find_password:
+                startActivity(new Intent(LoginActivity.this, FindPwdActivity.class));
                 break;
             default:
                 break;
@@ -92,6 +98,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
+                        Log.d("userId", "onResponse: " + response+"/"+id);
                         showToast("登录成功");
                         SPUtils.getInstance(LoginActivity.this).put(Constant.SP_KEY_WALLET_ADDRESS, password);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
